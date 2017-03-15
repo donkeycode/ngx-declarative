@@ -1,0 +1,25 @@
+<template *ngIf="paginationPosition=='top' || paginationPosition=='both'" template-loader [parent]="this" type="paginationTemplate"></template>
+<div class="filters">
+  <a class="btn" (click)="filtres = !filtres">{{filtres? '-' : '+'}} Filtres</a>
+  <div class="filtre-container">
+    <template [ngIf]="filtres">
+      <template ngFor let-column [ngForOf]="cols">
+        {{column.mappedOn}} <template template-loader [element]="column" [parent]="this" type="filterTemplate"></template>
+      </template>
+    </template>
+  </div>
+</div>
+<div class="cards">
+  <div class="card" *ngFor="let item of rows">
+    <div class="actions">
+      <a class="btn" (click)="item.toogleActions = !item.toogleActions">...</a>
+      <template [ngIf]="item.toogleActions">
+        <div *ngFor="let action of acts">
+          <template template-loader [element]="action" [parent]="this" [item]="item" type="actionTemplate"></template>
+        </div>
+      </template>
+    </div>
+    <template template-loader [element]="card" [parent]="this" [item]="item" type="cardTemplate"></template>
+  </div>
+</div>
+<template *ngIf="paginationPosition=='bottom' || paginationPosition=='both'" template-loader [parent]="this" type="paginationTemplate"></template>

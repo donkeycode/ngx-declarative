@@ -1,0 +1,70 @@
+@import "../variables.scss";
+:host /deep/ {
+  .list-pagination, .datagrid-action {
+    text-align: center;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                      supported by Chrome and Opera */
+    a, span {
+      padding: 5px;
+      min-width: 15px;
+      height: 15px;
+      border-radius: 4px;
+      display: inline-block;
+      border: 1px solid $light-grey;
+      background: $dark-white;
+    }
+    span {
+      color: $grey;
+      cursor: not-allowed;
+    }
+    a {
+      background: #fff;
+      cursor: pointer;
+
+      &:hover {
+        background: $dark-white;
+      }
+    }
+
+  }
+
+  table.datagrid {
+    border: 1px solid $light-grey;
+    border-spacing: 0px;
+    padding: 10px;
+    border-radius: 4px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    thead{
+      tr th {
+        text-align: left;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      tr:last-child th {
+        border-bottom: 1px solid $light-grey;
+        padding-bottom: 15px;
+      }
+    }
+
+    tbody{
+      tr td {
+        border-top: 1px solid $dark-white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      tr:hover td {
+        background: #f1f1f1;
+      }
+    }
+  }
+}

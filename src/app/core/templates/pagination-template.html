@@ -1,0 +1,8 @@
+<div class="list-pagination">
+  <a *ngIf="parent?.pagination?.page - 1 > 0" (click)="parent?.changePage(parent?.pagination?.page - 1)"><</a>
+  <template ngFor let-page [ngForOf]="parent?.createPaginationArray(3)">
+  <a *ngIf="page !== parent?.pagination?.page" (click)="parent?.changePage(page)">{{page}}</a>
+  <span *ngIf="page === parent?.pagination?.page" >{{page}}</span>
+  </template>
+  <a *ngIf="parent?.pagination?.page + 1 <= parent?.totalPages" (click)="parent?.changePage(parent?.pagination?.page + 1)">></a>
+</div>

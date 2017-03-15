@@ -1,0 +1,12 @@
+<template ngFor let-col [ngForOf]="columns" let-lastCol="last">
+  <th #filterCell
+        (dragstart)="datagrid.onColumnDragStart($event)"
+        (dragover)="datagrid.onColumnDragover($event)"
+        (dragleave)="datagrid.onColumnDragleave($event)"
+        (drop)="datagrid.onColumnDrop($event)"
+        (mousedown)="datagrid.onFilerMousedown($event,filterCell)"
+        (keydown)="datagrid.onFilerKeydown($event,col)">
+        <template template-loader [element]="col" [parent]="datagrid" type="filterTemplate"></template>
+  </th>
+</template>
+<th *ngIf="hasAction"></th>
