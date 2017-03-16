@@ -1,4 +1,5 @@
 # Templating for datas
+[Documentation](index.md)
 
 ```` ts
 import { Templating } from './datagrid/dynamics/templates.provider';

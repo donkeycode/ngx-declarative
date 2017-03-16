@@ -1,4 +1,5 @@
 # Datagrid configuration
+[Documentation](index.md)
 
 ## In global configuration
 
@@ -26,4 +27,3 @@ Configurator.setConfig({
 >
 </data-grid>
 ````
-

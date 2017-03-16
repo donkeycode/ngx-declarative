@@ -1,4 +1,5 @@
 # Configuration for columns
+[Documentation](index.md)
 
 ## Options on column
 

@@ -1,4 +1,5 @@
 # Configuration for actions
+[Documentation](index.md)
 
 ## Options on actions
 

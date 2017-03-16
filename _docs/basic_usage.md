@@ -1,6 +1,7 @@
 # Basic Usage
+[Documentation](index.md)
 
-Declare your api 
+Declare your api
 
 ```` ts
 import { Configurator } from './datagrid/configurator';
@@ -11,7 +12,7 @@ Configurator.setConfig({
 });
 ````
 
-In your page connect your grid to 
+In your page connect your grid to
 
 ```` html
 <data-grid objects="books">
@@ -20,4 +21,3 @@ In your page connect your grid to
 ````
 
 That's all !
-

@@ -1,4 +1,5 @@
 # Connect your APIs
+[Documentation](index.md)
 
 DataProviders are inspired from https://github.com/marmelab/admin-on-rest/blob/master/src/rest/
 
@@ -30,7 +31,7 @@ export default (apiUrl, httpClient = fetchJson) => {
 })
 `````
 
-## Use your own 
+## Use your own
 
 ### In global configuration
 
@@ -54,4 +55,3 @@ Configurator.setConfig({
 >
 </data-grid>
 ````
-
