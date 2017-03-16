@@ -1,3 +1,3 @@
 # ngx-declarative
 
-[Doc](_docs/)
+[Doc](_docs/index.md)
