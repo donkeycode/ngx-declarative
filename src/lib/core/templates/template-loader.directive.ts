@@ -65,7 +65,6 @@ export class TemplateLoaderDirective implements OnInit, OnDestroy, AfterViewInit
         // here we get a TEMPLATE with dynamic content === TODO
         return TemplatesProvider.get(this.element ? this.element.type : ' default', this.type)
           .then((template) => {
-            // throw JSON.stringify(template);
             // here we get Factory (just compiled or from cache)
             return this.typeBuilder
                 .createComponentFactory(template)

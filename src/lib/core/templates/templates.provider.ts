@@ -1,4 +1,3 @@
-import paginationTemplate from './pagination-template.html';
 export class TemplatesProvider {
 
     public static get(elementType: string, part: string): Promise<any> {
@@ -46,7 +45,7 @@ TemplatesProvider.set('default', 'paginationTemplate',
     </template>
     <a *ngIf="parent?.pagination?.page + 1 <= parent?.totalPages" (click)="parent?.changePage(parent?.pagination?.page + 1)">></a>
   </div>`);
-TemplatesProvider.set('default', 'cardTemplate', 'Bonjour'); // @TODO
+TemplatesProvider.set('default', 'cardTemplate', 'Please insert card template with &lt;card&gt; &lt;template dg-template="card" let-card="element" let-item="item"&gt;What you want to display in your card here &lt;/template&gt; &lt;/card&gt;');
 
 TemplatesProvider.set('html', 'bodyTemplate', '<div [innerHTML]=item[element.mappedOn]></div>');
 
