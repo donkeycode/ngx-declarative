@@ -1,5 +1,4 @@
 import paginationTemplate from './pagination-template.html';
-import cardFilterTemplate from './card-filter-template.html';
 export class TemplatesProvider {
 
     public static get(elementType: string, part: string): Promise<any> {
@@ -11,8 +10,8 @@ export class TemplatesProvider {
 
             if (!TemplatesProvider.templates[elementType]
               || !TemplatesProvider.templates[elementType][part]) {
-                return rej('No templates for elementType "' + elementType +
-                  '" and part "' + part + '"');
+                return rej( 'No templates for elementType "' + elementType +
+                  '" and part "' + part + '"' );
             }
 
             return res(TemplatesProvider.templates[elementType][part]);
@@ -38,7 +37,15 @@ TemplatesProvider.set('default', 'filterTemplate',
   [ngModel]="" (ngModelChange)="parent.filter($event, element)"/>`);
 TemplatesProvider.set('default', 'actionTemplate',
   `<a (click)="element.onClick(item)">{{ element.type }}</a>`);
-TemplatesProvider.set('default', 'paginationTemplate', paginationTemplate);
+TemplatesProvider.set('default', 'paginationTemplate',
+  `<div class="list-pagination">
+    <a *ngIf="parent?.pagination?.page - 1 > 0" (click)="parent?.changePage(parent?.pagination?.page - 1)"><</a>
+    <template ngFor let-page [ngForOf]="parent?.createPaginationArray(3)">
+    <a *ngIf="page !== parent?.pagination?.page" (click)="parent?.changePage(page)">{{page}}</a>
+    <span *ngIf="page === parent?.pagination?.page" >{{page}}</span>
+    </template>
+    <a *ngIf="parent?.pagination?.page + 1 <= parent?.totalPages" (click)="parent?.changePage(parent?.pagination?.page + 1)">></a>
+  </div>`);
 TemplatesProvider.set('default', 'cardTemplate', 'Bonjour'); // @TODO
 
 TemplatesProvider.set('html', 'bodyTemplate', '<div [innerHTML]=item[element.mappedOn]></div>');
