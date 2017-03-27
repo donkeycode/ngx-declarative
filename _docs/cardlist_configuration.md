@@ -1,4 +1,4 @@
-# Datagrid configuration
+# CardsList configuration
 [Documentation](index.md)
 
 ## In global configuration
