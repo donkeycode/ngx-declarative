@@ -1,15 +1,17 @@
 {
-  "name": "angular2-webpack-starter",
-  "version": "5.4.1",
-  "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
+  "name": "ngx-declarative",
+  "version": "1.0.0",
+  "description": "An Angular 2 toolkit with datagrid, card-list in declarative programing",
   "keywords": [
     "angular2",
     "webpack",
-    "typescript"
+    "typescript",
+    "declarative",
+    "datagrid",
+    "cardlist"
   ],
-  "author": "Patrick Stapleton <patrick@angularclass.com>",
-  "homepage": "https://github.com/angularclass/angular2-webpack-starter",
-  "license": "MIT",
+  "author": "DonkeyCode <hello@donkeycode.com>",
+  "homepage": "https://github.com/donkeycode/ngx-declarative",
   "scripts": {
     "build:aot:prod": "npm run clean:dist && npm run clean:aot && webpack --config config/webpack.prod.js  --progress --profile --bail",
     "build:aot": "npm run build:aot:prod",
@@ -156,10 +158,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
+    "url": "https://github.com/donkeycode/ngx-declarative"
   },
   "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
+    "url": "https://github.com/donkeycode/ngx-declarative/issues"
   },
   "engines": {
     "node": ">= 4.2.1",

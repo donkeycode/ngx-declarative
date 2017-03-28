@@ -24,7 +24,6 @@
   ],
   "main": "src/",
   "author": "Donkeycode <hello@donkeycode.com>",
-  "license": "ISC",
   "dependencies": {
     "moment": "*"
   },
