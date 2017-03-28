@@ -1,6 +1,6 @@
 {
   "name": "ngx-declarative",
-  "version": "0.0.6",
+  "version": "1.0.1",
   "description": "An Angular 2 toolkit with datagrid, card-list in declarative programing",
   "repository": {
     "type": "git",
@@ -8,6 +8,8 @@
   },
   "keywords": [
     "angular2",
+    "webpack",
+    "typescript",
     "declarative",
     "datagrid",
     "cardlist"
@@ -23,7 +25,7 @@
     "*.scss"
   ],
   "main": "src/",
-  "author": "Donkeycode <hello@donkeycode.com>",
+  "author": "DonkeyCode <hello@donkeycode.com>",
   "dependencies": {
     "moment": "*"
   },
