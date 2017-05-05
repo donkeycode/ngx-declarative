@@ -39,6 +39,7 @@ export abstract class RestListConnectable implements OnInit, AfterContentInit {
 
   @Input() public objects: string; // @TODO find a way to set it in mixins
 
+  /* tslint:disable no-input-rename */
   @Input('api-url') public apiUrl: string;
 
   @Input() public source;
@@ -122,7 +123,7 @@ export abstract class RestListConnectable implements OnInit, AfterContentInit {
     this.initActions();
   }
 
-  public initColumns () { };
-  public initActions () { };
-
+  /* tslint:disable no-empty */
+  public initColumns() { };
+  public initActions() { };
 }

@@ -28,6 +28,7 @@ export class TemplatesProvider {
     private static templates = {};
 }
 
+/* tslint:disable */
 // Register some templates
 TemplatesProvider.set('default', 'headerTemplate', '{{ element.translationKey }}');
 TemplatesProvider.set('default', 'bodyTemplate', '{{ item[element.mappedOn] }}');
@@ -70,3 +71,4 @@ TemplatesProvider.set('datetime', 'filterTemplate',
 TemplatesProvider.set('number', 'filterTemplate',
 `<input type="number" [name]="element.mappedOn"
 ngModel (ngModelChange)="parent.filter($event, element)"/>`);
+/* tslint:enable */

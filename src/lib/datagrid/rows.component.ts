@@ -14,6 +14,9 @@ export class RowsComponent {
 
     // @Input() public parent: RestListConnectable;
     @Input() public item;
-    constructor(@Inject(forwardRef(() => DataGridComponent)) public datagrid: DataGridComponent) {}
+
+    /* tslint:disable no-forward-ref */
+    constructor(@Inject(forwardRef(() => DataGridComponent)) public datagrid: DataGridComponent) {
+    }
 
 }

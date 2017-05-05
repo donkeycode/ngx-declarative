@@ -5,6 +5,7 @@ import {
 import { ColumnComponent, ActionComponent, GET_LIST, RestListConnectable } from '../core';
 import { Configurator } from '../configurator';
 
+/* tslint:disable no-access-missing-member */
 @Component({
   selector: 'data-grid',
   styleUrls: [ './data-grid.component.scss' ],
@@ -49,7 +50,7 @@ export class DataGridComponent extends RestListConnectable implements AfterConte
 
   public trackByFn(index, item) {
     if (item && item.id) {
-      return item.id
+      return item.id;
     }
     return index;
   }

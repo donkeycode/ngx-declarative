@@ -5,7 +5,7 @@ export abstract class AbstractElement implements AfterContentInit {
     public templates;
     @Input() public type: string;
 
-    public ngAfterContentInit():void {
+    public ngAfterContentInit(): void {
       this.loadTemplates();
     }
 

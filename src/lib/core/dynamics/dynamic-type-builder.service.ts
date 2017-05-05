@@ -17,12 +17,12 @@ export interface IHaveDynamicData {
 
 @Injectable()
 export class DynamicTypeBuilder {
-  protected compiler;
-
   // this object is singleton - so we can use this as a cache
   private static _cacheOfFactories: {
     [templateKey: string]: ComponentFactory<IHaveDynamicData>
   } = {};
+
+  protected compiler;
 
   // wee need Dynamic component builder
   constructor() {
@@ -60,6 +60,7 @@ export class DynamicTypeBuilder {
   }
 
   protected createNewComponent(tmpl: string) {
+    /* tslint:disable max-classes-per-file */
     @Component({
         selector: 'dynamic-component',
         template: tmpl,
@@ -76,6 +77,7 @@ export class DynamicTypeBuilder {
   }
 
   protected createComponentModule(componentType: any, options: any = {}) {
+    /* tslint:disable max-classes-per-file */
     @NgModule({
       imports: [
         DynamicsModule, // there are 'html-column text-column'...

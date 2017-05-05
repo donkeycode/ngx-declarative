@@ -1,14 +1,15 @@
 import { Directive, Input, TemplateRef } from '@angular/core';
 
 @Directive({
-    selector: '[dg-template]'
+  selector: '[dg-template]'
 })
 export class DgTemplateDirective {
-    @Input('dg-template') public name: string;
+  /* tslint:disable no-input-rename */
+  @Input('dg-template') public name: string;
 
-    constructor(public template: TemplateRef<any>) {}
+  constructor(public template: TemplateRef<any>) {}
 
-    public getType(): string {
-        return this.name;
-    }
+  public getType(): string {
+    return this.name;
+  }
 }

@@ -39,7 +39,7 @@ export class ActionComponent extends AbstractElement implements  AfterContentIni
   }
 
   private doAction(item) {
-    if(this.onAction.observers.length > 0) {
+    if (this.onAction.observers.length > 0) {
       return this.onAction.emit(item);
     }
     // @Todo make it more customizable

@@ -8,9 +8,10 @@ import { ColumnComponent } from '../core';
 })
 export class HeadersComponent {
 
-    @Input('headers') public columns: ColumnComponent[];
-    @Input() public hasAction: boolean;
+  /* tslint:disable no-input-rename */
+  @Input('headers') public columns: ColumnComponent[];
+  @Input() public hasAction: boolean;
 
-    constructor(@Inject(forwardRef(() => DataGridComponent)) public datagrid: DataGridComponent) {}
-
+  /* tslint:disable no-forward-ref */
+  constructor(@Inject(forwardRef(() => DataGridComponent)) public datagrid: DataGridComponent) {}
 }
