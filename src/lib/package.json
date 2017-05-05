@@ -1,13 +1,14 @@
 {
   "name": "ngx-declarative",
-  "version": "1.0.2",
-  "description": "An Angular 2 toolkit with datagrid, card-list in declarative programing",
+  "version": "1.0.3",
+  "description": "An Angular toolkit with datagrid, card-list in declarative programing",
   "repository": {
     "type": "git",
     "url": "https://github.com/donkeycode/ngx-declarative/"
   },
   "keywords": [
     "angular2",
+    "angular4",
     "webpack",
     "typescript",
     "declarative",
