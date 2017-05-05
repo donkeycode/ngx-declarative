@@ -7,7 +7,6 @@ import { ActionComponent } from './action.component';
 import { DgTemplateDirective, TemplateLoaderDirective } from './templates';
 
 import { DynamicsModule }    from './dynamics';
-import { COMPILER_PROVIDERS } from '@angular/compiler';
 
 let components = [
     ColumnComponent,
@@ -22,9 +21,6 @@ let components = [
     imports: [
         CommonModule,
         DynamicsModule.forRoot() // singletons
-    ],
-    providers: [
-        COMPILER_PROVIDERS // this is an app singleton declaration
     ]
 })
 export class CoreModule { }

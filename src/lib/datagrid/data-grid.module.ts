@@ -8,8 +8,6 @@ import { FiltersComponent } from './filters.component';
 
 import { CoreModule } from '../core';
 
-import { COMPILER_PROVIDERS } from '@angular/compiler';
-
 let components = [
     DataGridComponent,
     HeadersComponent,
@@ -23,9 +21,6 @@ let components = [
     imports: [
         CommonModule,
         CoreModule
-    ],
-    providers: [
-        COMPILER_PROVIDERS // this is an app singleton declaration
     ]
 })
 export class DataGridModule { }
