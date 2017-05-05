@@ -43,6 +43,6 @@ export class ActionComponent extends AbstractElement implements  AfterContentIni
       return this.onAction.emit(item);
     }
     // @Todo make it more customizable
-    this.router.navigate([this.route.snapshot.routeConfig.path, item.id, this.type ]);
+    this.router.navigate([item.id, this.type], { relativeTo: this.route });
   }
 }

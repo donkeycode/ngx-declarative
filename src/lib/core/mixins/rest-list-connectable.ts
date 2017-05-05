@@ -111,7 +111,7 @@ export abstract class RestListConnectable implements OnInit, AfterContentInit {
     let startIndex = this.pagination.page - offset <= 0 ? 1 : this.pagination.page - offset;
     let lastIndex = this.pagination.page + offset + 1 > this.totalPages ?
       this.totalPages : this.pagination.page + offset + 1;
-    for (let i = startIndex; i < lastIndex; i++) {
+    for (let i = startIndex; i < lastIndex + 1; i++) {
       array.push(i);
     }
     return array;
