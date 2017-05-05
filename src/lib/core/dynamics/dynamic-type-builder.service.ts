@@ -2,7 +2,7 @@
 import {
   Component, ComponentFactory, NgModule, Input, Injectable, ContentChild
 } from '@angular/core';
-import { JitCompiler } from '@angular/compiler';
+import { JitCompilerFactory } from '@angular/compiler';
 import { DynamicsModule } from '../dynamics/dynamics.module';
 import { DgTemplateDirective } from '../templates';
 import { RestListConnectable, AbstractElement } from '../mixins';
@@ -17,6 +17,7 @@ export interface IHaveDynamicData {
 
 @Injectable()
 export class DynamicTypeBuilder {
+  protected compiler;
 
   // this object is singleton - so we can use this as a cache
   private static _cacheOfFactories: {
@@ -24,9 +25,9 @@ export class DynamicTypeBuilder {
   } = {};
 
   // wee need Dynamic component builder
-  constructor(
-    protected compiler: JitCompiler
-  ) {}
+  constructor() {
+    this.compiler = new JitCompilerFactory([{useDebug: false, useJit: true}]).createCompiler();
+  }
 
   public createComponentFactory(template): Promise<ComponentFactory<IHaveDynamicData>> {
     let factory = DynamicTypeBuilder._cacheOfFactories[template.template];

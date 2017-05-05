@@ -1,4 +1,4 @@
-# DataGrid documentation
+# DataGrid
 
 1. [Basic Usage](basic_usage.md)
 2. [Columns Configuration](columns_configuration.md)
