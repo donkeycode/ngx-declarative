@@ -1,10 +1,19 @@
 # Basic Usage
 [Documentation](index.md)
 
+```` ts
+import { DataGridModule } from 'ngx-declarative/datagrid';
+
+@NgModule({
+  imports: [DataGridModule,...]
+})
+export class AppModule(){}
+````
+
 Declare your api
 
 ```` ts
-import { Configurator } from './datagrid/configurator';
+import { Configurator } from 'ngx-declarative/configurator';
 
 Configurator.setConfig({
     // Your api url

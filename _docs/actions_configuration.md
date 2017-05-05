@@ -10,7 +10,7 @@
     <!-- define the type of the actions -->
     confirm="string"
     <!-- define the confirm text message -->
-    (onAction)="function"
+    (onAction)="function($event)"
     <!-- define the callback function when click -->
 ></action>
 ````

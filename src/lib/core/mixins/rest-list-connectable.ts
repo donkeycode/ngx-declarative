@@ -37,11 +37,11 @@ export abstract class RestListConnectable implements OnInit, AfterContentInit {
 
   public totalPages: number = 1;
 
-  @Input() private objects: string; // @TODO find a way to set it in mixins
+  @Input() public objects: string; // @TODO find a way to set it in mixins
 
-  @Input('api-url') private apiUrl: string;
+  @Input('api-url') public apiUrl: string;
 
-  @Input() private source;
+  @Input() public source;
 
   constructor(public changeDetector: ChangeDetectorRef) {
   }

@@ -12,9 +12,9 @@ import { Configurator } from '../configurator';
 })
 export class DataGridComponent extends RestListConnectable implements AfterContentInit {
 
-  @ContentChildren(ColumnComponent) protected cols: QueryList<ColumnComponent>;
+  @ContentChildren(ColumnComponent) public cols: QueryList<ColumnComponent>;
 
-  @ContentChildren(ActionComponent) protected acts: QueryList<ActionComponent>;
+  @ContentChildren(ActionComponent) public acts: QueryList<ActionComponent>;
 
   constructor(public changeDetector: ChangeDetectorRef) {
     super(changeDetector);
@@ -45,5 +45,12 @@ export class DataGridComponent extends RestListConnectable implements AfterConte
       this.initActions();
       this.changeDetector.markForCheck();
     });
+  }
+
+  public trackByFn(index, item) {
+    if (item && item.id) {
+      return item.id
+    }
+    return index;
   }
 }
