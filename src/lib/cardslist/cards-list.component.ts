@@ -20,11 +20,11 @@ export class CardsListComponent extends RestListConnectable  {
     <div *componentOutlet="'lol'; context: self; selector:'test2'"></div>
   </div>`;
 
-    @ContentChildren(ColumnComponent) protected cols: QueryList<ColumnComponent>;
+    @ContentChildren(ColumnComponent) public cols: QueryList<ColumnComponent>;
 
-    @ContentChildren(ActionComponent) protected acts: QueryList<ActionComponent>;
+    @ContentChildren(ActionComponent) public acts: QueryList<ActionComponent>;
 
-    @ContentChild(CardComponent) protected card: CardComponent;
+    @ContentChild(CardComponent) public card: CardComponent;
 
     public initColumns() {
       this.columns = this.cols.toArray();
