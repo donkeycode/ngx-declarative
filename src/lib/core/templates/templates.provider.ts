@@ -40,10 +40,10 @@ TemplatesProvider.set('default', 'actionTemplate',
 TemplatesProvider.set('default', 'paginationTemplate',
   `<div class="list-pagination">
     <a *ngIf="parent?.pagination?.page - 1 > 0" (click)="parent?.changePage(parent?.pagination?.page - 1)"><</a>
-    <template ngFor let-page [ngForOf]="parent?.createPaginationArray(3)">
+    <ng-template ngFor let-page [ngForOf]="parent?.createPaginationArray(3)">
       <a *ngIf="page !== parent?.pagination?.page" (click)="parent?.changePage(page)">{{page}}</a>
       <span *ngIf="page === parent?.pagination?.page" >{{page}}</span>
-    </template>
+    </ng-template>
     <a *ngIf="parent?.pagination?.page + 1 <= parent?.totalPages" (click)="parent?.changePage(parent?.pagination?.page + 1)">></a>
   </div>`);
 TemplatesProvider.set('default', 'cardTemplate', 'Please insert card template with &lt;card&gt; &lt;template dg-template="card" let-card="element" let-item="item"&gt;What you want to display in your card here &lt;/template&gt; &lt;/card&gt;');

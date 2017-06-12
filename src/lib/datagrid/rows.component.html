@@ -1,11 +1,11 @@
-<template ngFor let-col [ngForOf]="columns" let-lastCol="last">
+<ng-template ngFor let-col [ngForOf]="columns" let-lastCol="last">
   <td #rowCell>
-    <template template-loader [element]="col" [parent]="datagrid" [item]="item" type="bodyTemplate"></template>
+    <ng-template template-loader [element]="col" [parent]="datagrid" [item]="item" type="bodyTemplate"></ng-template>
   </td>
-</template>
+</ng-template>
 
 <td class="datagrid-action" *ngIf="actions.length > 0">
-  <template ngFor let-action [ngForOf]="actions" let-lastAction="last">
-    <template template-loader [element]="action" [parent]="datagrid" [item]="item" type="actionTemplate"></template>
-  </template>
+  <ng-template ngFor let-action [ngForOf]="actions" let-lastAction="last">
+    <ng-template template-loader [element]="action" [parent]="datagrid" [item]="item" type="actionTemplate"></ng-template>
+  </ng-template>
 </td>

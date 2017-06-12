@@ -1,4 +1,4 @@
-<template *ngIf="paginationPosition=='top' || paginationPosition=='both'" template-loader [parent]="this" type="paginationTemplate"></template>
+<ng-template *ngIf="paginationPosition=='top' || paginationPosition=='both'" template-loader [parent]="this" type="paginationTemplate"></ng-template>
 <table class="datagrid">
     <thead>
         <tr [headers]="columns" [hasAction]="actions.length > 0"></tr>
@@ -9,4 +9,4 @@
     </tbody>
 </table>
 
-<template *ngIf="paginationPosition=='bottom' || paginationPosition=='both'" template-loader [parent]="this" type="paginationTemplate"></template>
+<ng-template *ngIf="paginationPosition=='bottom' || paginationPosition=='both'" template-loader [parent]="this" type="paginationTemplate"></ng-template>

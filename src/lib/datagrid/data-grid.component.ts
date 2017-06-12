@@ -17,6 +17,8 @@ export class DataGridComponent extends RestListConnectable implements AfterConte
 
   @ContentChildren(ActionComponent) public acts: QueryList<ActionComponent>;
 
+  public paginationPosition: string;
+
   constructor(public changeDetector: ChangeDetectorRef) {
     super(changeDetector);
   }

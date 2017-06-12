@@ -1,4 +1,4 @@
-<template ngFor let-col [ngForOf]="columns" let-lastCol="last">
+<ng-template ngFor let-col [ngForOf]="columns" let-lastCol="last">
   <th #headerCell
         (click)="datagrid.sort($event,col)"
         [ngClass]="{
@@ -14,7 +14,7 @@
         (drop)="datagrid.onColumnDrop($event)"
         (mousedown)="datagrid.onHeaderMousedown($event,headerCell)"
         (keydown)="datagrid.onHeaderKeydown($event,col)">
-        <template template-loader [element]="col" [parent]="datagrid" type="headerTemplate"></template>
+        <ng-template template-loader [element]="col" [parent]="datagrid" type="headerTemplate"></ng-template>
   </th>
-</template>
+</ng-template>
 <th *ngIf="hasAction"></th>
