@@ -16,7 +16,9 @@ export class DataGridComponent extends RestListConnectable implements AfterConte
   @ContentChildren(ColumnComponent) public cols: QueryList<ColumnComponent>;
 
   @ContentChildren(ActionComponent) public acts: QueryList<ActionComponent>;
-  @Input() public trackBy: string = 'id';
+  @Input() public trackByOption: string = 'id';
+
+  public trackByFn;
 
   public paginationPosition: string;
 
@@ -34,8 +36,15 @@ export class DataGridComponent extends RestListConnectable implements AfterConte
   public onHeaderKeydown = () => undefined;
 
   public initColumns() {
-    this.columns = this.cols.toArray();
+    let trackByOption = this.trackByOption;
+    this.trackByFn = function trackByFn(index, item) {
+      if (item && item[trackByOption]) {
+        return item[trackByOption];
+      }
+      return index;
+    };
 
+    this.columns = this.cols.toArray();
     this.columnsSubscription = this.cols.changes.subscribe(() => {
       this.initColumns();
       this.changeDetector.markForCheck();
@@ -49,12 +58,5 @@ export class DataGridComponent extends RestListConnectable implements AfterConte
       this.initActions();
       this.changeDetector.markForCheck();
     });
-  }
-
-  public trackByFn(index, item) {
-    if (item && item[this.trackBy]) {
-      return item[this.trackBy];
-    }
-    return index;
   }
 }
