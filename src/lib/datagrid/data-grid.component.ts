@@ -16,6 +16,7 @@ export class DataGridComponent extends RestListConnectable implements AfterConte
   @ContentChildren(ColumnComponent) public cols: QueryList<ColumnComponent>;
 
   @ContentChildren(ActionComponent) public acts: QueryList<ActionComponent>;
+  @Input() public trackBy: string = 'id';
 
   public paginationPosition: string;
 
@@ -51,8 +52,8 @@ export class DataGridComponent extends RestListConnectable implements AfterConte
   }
 
   public trackByFn(index, item) {
-    if (item && item.id) {
-      return item.id;
+    if (item && item[this.trackBy]) {
+      return item[this.trackBy];
     }
     return index;
   }
