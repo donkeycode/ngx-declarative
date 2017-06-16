@@ -32,6 +32,7 @@ export default (apiUrl, httpClient = fetchJson) => {
     const convertRESTRequestToHTTP = (type, resource, params) => {
         let url = '';
         const options: any = {};
+        let separator = resource.indexOf('?') !== -1 ? '?' : '&';
         switch (type) {
         case GET_LIST: {
             const { page, perPage } = params.pagination;
@@ -41,7 +42,7 @@ export default (apiUrl, httpClient = fetchJson) => {
                 range: JSON.stringify([(page - 1) * perPage, (page * perPage) - 1]),
                 filter: JSON.stringify(params.filter),
             };
-            url = `${apiUrl}/${resource}?${queryParameters(query)}`;
+            url = `${apiUrl}/${resource}separator${queryParameters(query)}`;
             break;
         }
         case GET_ONE:
@@ -51,7 +52,7 @@ export default (apiUrl, httpClient = fetchJson) => {
             const query = {
                 filter: JSON.stringify({ id: params.ids }),
             };
-            url = `${apiUrl}/${resource}?${queryParameters(query)}`;
+            url = `${apiUrl}/${resource}separator${queryParameters(query)}`;
             break;
         }
         case GET_MANY_REFERENCE: {
@@ -62,7 +63,7 @@ export default (apiUrl, httpClient = fetchJson) => {
                 range: JSON.stringify([(page - 1) * perPage, (page * perPage) - 1]),
                 filter: JSON.stringify({ ...params.filter, [params.target]: params.id }),
             };
-            url = `${apiUrl}/${resource}?${queryParameters(query)}`;
+            url = `${apiUrl}/${resource}separator${queryParameters(query)}`;
             break;
         }
         case UPDATE:
