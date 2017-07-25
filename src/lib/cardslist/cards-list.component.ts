@@ -26,6 +26,23 @@ export class CardsListComponent extends RestListConnectable  {
 
     @ContentChild(CardComponent) public card: CardComponent;
 
+    @Input() public trackByOption: string = 'id';
+
+    public trackByFn;
+
+    constructor(public changeDetector: ChangeDetectorRef) {
+      super(changeDetector);
+    }
+
+    public onColumnDragStart = () => undefined;
+    public onColumnDragover = () => undefined;
+    public onColumnDragleave = () => undefined;
+    public onColumnDrop = () => undefined;
+    public onFilerMousedown = () => undefined;
+    public onFilerKeydown = () => undefined;
+    public onHeaderMousedown = () => undefined;
+    public onHeaderKeydown = () => undefined;
+
     public initColumns() {
       this.columns = this.cols.toArray();
 

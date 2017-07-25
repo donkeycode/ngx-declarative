@@ -10,7 +10,7 @@
   </div>
 </div>
 <div class="cards">
-  <div class="card" *ngFor="let item of rows">
+  <div class="card" *ngFor="let item of rows; trackBy:trackByFn">
     <div class="actions">
       <a class="btn" (click)="item.toogleActions = !item.toogleActions">...</a>
       <ng-template [ngIf]="item.toogleActions">
