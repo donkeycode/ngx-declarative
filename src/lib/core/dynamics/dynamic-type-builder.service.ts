@@ -1,8 +1,10 @@
 // From http://plnkr.co/edit/wh4VJG?p=preview
 import {
-  Component, ComponentFactory, NgModule, Input, Injectable, ContentChild
+  Compiler, Component, ComponentFactory, NgModule, Input, Injectable, ContentChild, Injector, ReflectiveInjector, ModuleWithComponentFactories, ViewContainerRef
 } from '@angular/core';
-import { JitCompilerFactory } from '@angular/compiler';
+import { FormsModule }   from '@angular/forms';
+import { CommonModule }  from '@angular/common';
+import { JitCompilerFactory, COMPILER_PROVIDERS } from '@angular/compiler';
 import { DynamicsModule } from '../dynamics/dynamics.module';
 import { DgTemplateDirective } from '../templates';
 import { RestListConnectable, AbstractElement } from '../mixins';
@@ -15,6 +17,19 @@ export interface IHaveDynamicData {
     item: any;
 }
 
+export function CustomComponent(annotation: any) {
+  return function (target: any) {
+    const metaData = new Component(annotation)
+    Component(metaData)(target)
+  }
+}
+export function CustomNgModule(annotation: any) {
+  return function (target: any) {
+    const metaData = new NgModule(annotation)
+    NgModule(metaData)(target)
+  }
+}
+
 @Injectable()
 export class DynamicTypeBuilder {
   // this object is singleton - so we can use this as a cache
@@ -22,11 +37,14 @@ export class DynamicTypeBuilder {
     [templateKey: string]: ComponentFactory<IHaveDynamicData>
   } = {};
 
+  private injector: Injector;
   protected compiler;
 
   // wee need Dynamic component builder
-  constructor() {
-    this.compiler = new JitCompilerFactory([{useDebug: false, useJit: true}]).createCompiler();
+  constructor(injector: Injector) {
+    this.injector = ReflectiveInjector.resolveAndCreate(COMPILER_PROVIDERS, injector);
+    this.compiler = this.injector.get(Compiler);
+    // this.compiler = new JitCompilerFactory([{useDebug: false, useJit: true}]).createCompiler();
   }
 
   public createComponentFactory(template): Promise<ComponentFactory<IHaveDynamicData>> {
@@ -46,22 +64,34 @@ export class DynamicTypeBuilder {
 
     return new Promise((resolve) => {
         let moduleWithFactories = this.compiler
-            .compileModuleAndAllComponentsSync(module);
+            .compileModuleAndAllComponentsAsync(module);
 
-        factory = moduleWithFactories.componentFactories.find((element) => {
-            return element.componentType === type;
+        // factory = moduleWithFactories.componentFactories.find((element) => {
+        //     return element.componentType === type;
+        // });
+        moduleWithFactories.then((moduleWithFactories: ModuleWithComponentFactories<any>) => {
+          let compFactory = moduleWithFactories.componentFactories.find(
+            (x) => { return x.componentType === type; }
+          );
+
+          DynamicTypeBuilder._cacheOfFactories[template.template] = compFactory;
+
+          resolve(compFactory);
+        })
+        .catch((error) => {
+          console.log(error);
         });
 
-        DynamicTypeBuilder._cacheOfFactories[template.template] = factory;
-
-        resolve(factory);
+        // DynamicTypeBuilder._cacheOfFactories[template.template] = factory;
+        //
+        // resolve(factory);
 
     });
   }
 
   protected createNewComponent(tmpl: string) {
     /* tslint:disable max-classes-per-file */
-    @Component({
+    @CustomComponent({
         selector: 'dynamic-component',
         template: tmpl,
     })
@@ -78,10 +108,14 @@ export class DynamicTypeBuilder {
 
   protected createComponentModule(componentType: any, options: any = {}) {
     /* tslint:disable max-classes-per-file */
-    @NgModule({
+    @CustomNgModule({
+      // imports: [
+      //   DynamicsModule, // there are 'html-column text-column'...
+      // ].concat(options.imports || []),
       imports: [
-        DynamicsModule, // there are 'html-column text-column'...
-      ].concat(options.imports || []),
+        CommonModule,
+        FormsModule
+      ],
       declarations: [
         componentType
       ],
