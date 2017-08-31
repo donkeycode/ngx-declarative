@@ -1,6 +1,6 @@
 {
   "name": "ngx-declarative",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "An Angular toolkit with datagrid, card-list in declarative programing",
   "repository": {
     "type": "git",
