@@ -1,13 +1,13 @@
 import {
   Component, AfterContentInit, ContentChild, ContentChildren, QueryList,
-  ChangeDetectorRef, OnInit, Input
+  ChangeDetectorRef, OnInit, Input, OnChanges
 } from '@angular/core';
 import { ColumnComponent } from '../column.component';
 import { ActionComponent } from '../action.component';
 import { GET_LIST } from '../data-providers';
 import { Configurator } from '../../configurator';
 
-export abstract class RestListConnectable implements OnInit, AfterContentInit {
+export abstract class RestListConnectable implements OnInit, OnChanges, AfterContentInit {
 
   @Input() set pagePosition(position: number){
     if (position) {
@@ -45,6 +45,13 @@ export abstract class RestListConnectable implements OnInit, AfterContentInit {
   @Input() public source;
 
   constructor(public changeDetector: ChangeDetectorRef) {
+  }
+
+  public ngOnChanges(changes) {
+    if (changes.objects) {
+      // If changing input source, refresh data
+      this.connectRest();
+    }
   }
 
   public ngOnInit() {
