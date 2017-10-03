@@ -54,10 +54,6 @@ export abstract class RestListConnectable implements OnInit, OnChanges, AfterCon
     }
   }
 
-  public ngOnInit() {
-    this.connectRest();
-  }
-
   public connectRest() {
     let restProvider = this.source ||
       Configurator.getRestProvider()(this.apiUrl || Configurator.apiUrl);
