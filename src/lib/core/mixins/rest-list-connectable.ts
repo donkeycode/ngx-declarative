@@ -1,13 +1,13 @@
 import {
   Component, AfterContentInit, ContentChild, ContentChildren, QueryList,
-  ChangeDetectorRef, OnInit, Input, OnChanges
+  ChangeDetectorRef, Input, OnChanges
 } from '@angular/core';
 import { ColumnComponent } from '../column.component';
 import { ActionComponent } from '../action.component';
 import { GET_LIST } from '../data-providers';
 import { Configurator } from '../../configurator';
 
-export abstract class RestListConnectable implements OnInit, OnChanges, AfterContentInit {
+export abstract class RestListConnectable implements OnChanges, AfterContentInit {
 
   @Input() set pagePosition(position: number){
     if (position) {

@@ -17,6 +17,7 @@ export class DataGridComponent extends RestListConnectable implements AfterConte
 
   @ContentChildren(ActionComponent) public acts: QueryList<ActionComponent>;
   @Input() public trackByOption: string = 'id';
+  @Input() public datagridClass: any;
 
   public trackByFn;
 
