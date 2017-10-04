@@ -89,7 +89,7 @@ export abstract class RestListConnectable implements OnChanges, AfterContentInit
       return;
     }
     if (this.sorting.field === col.mappedOn) {
-      this.sorting.order = this.sorting.order === 'ASC' ? 'DESC' : 'ASC';
+      this.sorting.order = this.sorting.order === 'DESC' ? 'ASC' : 'DESC';
     } else {
       this.sorting = {
         field: col.mappedOn,
