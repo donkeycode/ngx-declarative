@@ -50,6 +50,7 @@ export abstract class RestListConnectable implements OnChanges, AfterContentInit
   public ngOnChanges(changes) {
     if (changes.objects) {
       // If changing input source, refresh data
+      this.resetPage();
       this.connectRest();
     }
   }
@@ -89,7 +90,7 @@ export abstract class RestListConnectable implements OnChanges, AfterContentInit
       return;
     }
     if (this.sorting.field === col.mappedOn) {
-      this.sorting.order = this.sorting.order === 'DESC' ? 'ASC' : 'DESC';
+      this.sorting.order = this.sorting.order === 'ASC' ? 'DESC' : 'ASC';
     } else {
       this.sorting = {
         field: col.mappedOn,
