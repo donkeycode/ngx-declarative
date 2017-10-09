@@ -1,6 +1,16 @@
 // From http://plnkr.co/edit/wh4VJG?p=preview
 import {
-  Compiler, Component, ComponentFactory, NgModule, Input, Injectable, ContentChild, Injector, ReflectiveInjector, ModuleWithComponentFactories, ViewContainerRef
+  Compiler,
+  Component,
+  ComponentFactory,
+  NgModule,
+  Input,
+  Injectable,
+  ContentChild,
+  Injector,
+  ReflectiveInjector,
+  ModuleWithComponentFactories,
+  ViewContainerRef
 } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { CommonModule }  from '@angular/common';
@@ -18,16 +28,20 @@ export interface IHaveDynamicData {
 }
 
 export function CustomComponent(annotation: any) {
+  /* tslint:disable */
   return function (target: any) {
-    const metaData = new Component(annotation)
-    Component(metaData)(target)
-  }
+  /* tslint:enable */
+    const metaData = new Component(annotation);
+    Component(metaData)(target);
+  };
 }
 export function CustomNgModule(annotation: any) {
+  /* tslint:disable */
   return function (target: any) {
-    const metaData = new NgModule(annotation)
-    NgModule(metaData)(target)
-  }
+  /* tslint:enable */
+    const metaData = new NgModule(annotation);
+    NgModule(metaData)(target);
+  };
 }
 
 @Injectable()
@@ -36,9 +50,9 @@ export class DynamicTypeBuilder {
   private static _cacheOfFactories: {
     [templateKey: string]: ComponentFactory<IHaveDynamicData>
   } = {};
+  protected compiler;
 
   private injector: Injector;
-  protected compiler;
 
   // wee need Dynamic component builder
   constructor(injector: Injector) {
@@ -69,8 +83,8 @@ export class DynamicTypeBuilder {
         // factory = moduleWithFactories.componentFactories.find((element) => {
         //     return element.componentType === type;
         // });
-        moduleWithFactories.then((moduleWithFactories: ModuleWithComponentFactories<any>) => {
-          let compFactory = moduleWithFactories.componentFactories.find(
+        moduleWithFactories.then((moduleWithFactoriess: ModuleWithComponentFactories<any>) => {
+          let compFactory = moduleWithFactoriess.componentFactories.find(
             (x) => { return x.componentType === type; }
           );
 
