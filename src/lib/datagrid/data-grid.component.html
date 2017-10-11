@@ -5,7 +5,7 @@
         <tr [filters]="columns" [hasAction]="actions.length > 0"></tr>
     </thead>
     <tbody>
-        <tr table-row [columns]="columns" [actions]="actions" [item]="item" *ngFor="let item of rows;trackBy:trackByFn "></tr>
+        <tr table-row [columns]="columns" [actions]="actions" [item]="item" (click)="emitClickOnTr(item)" *ngFor="let item of rows;trackBy:trackByFn "></tr>
     </tbody>
 </table>
 
