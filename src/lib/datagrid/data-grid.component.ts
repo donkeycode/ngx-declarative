@@ -1,6 +1,6 @@
 import {
   Component, AfterContentInit, ContentChildren, QueryList, ChangeDetectorRef,
-  OnInit, Input
+  OnInit, Input, EventEmitter, Output
 } from '@angular/core';
 import { ColumnComponent, ActionComponent, GET_LIST, RestListConnectable } from '../core';
 import { Configurator } from '../configurator';
@@ -20,9 +20,11 @@ export class DataGridComponent extends RestListConnectable implements AfterConte
   @Input() public datagridClass: any;
 
   @Input() public trackByFn;
+  @Output() public clickOnRow = new EventEmitter();
 
   public paginationPosition: string;
   public columns;
+  public actions;
 
   constructor(public changeDetector: ChangeDetectorRef) {
     super(changeDetector);
@@ -56,7 +58,9 @@ export class DataGridComponent extends RestListConnectable implements AfterConte
       this.changeDetector.markForCheck();
     });
   }
-
+  public emitClickOnTr(item) {
+    this.clickOnRow.emit(item);
+  }
   public initActions() {
     this.actions = this.acts.toArray();
 
