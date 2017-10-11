@@ -19,9 +19,10 @@ export class DataGridComponent extends RestListConnectable implements AfterConte
   @Input() public trackByOption: string = 'id';
   @Input() public datagridClass: any;
 
-  public trackByFn;
+  @Input() public trackByFn;
 
   public paginationPosition: string;
+  public columns;
 
   constructor(public changeDetector: ChangeDetectorRef) {
     super(changeDetector);
@@ -38,13 +39,17 @@ export class DataGridComponent extends RestListConnectable implements AfterConte
 
   public initColumns() {
     let trackByOption = this.trackByOption;
-    this.trackByFn = function trackByFn(index, item) {
-      if (item && item[trackByOption]) {
-        return item[trackByOption];
-      }
-      return index;
-    };
+    if (!this.trackByFn) {
+      /* tslint:disable */
+      this.trackByFn = function trackByFn(index, item) {
+        if (item && item[trackByOption]) {
+          return item[trackByOption];
+        }
+        return index;
+      };
+      /* tslint:enable */
 
+    }
     this.columns = this.cols.toArray();
     this.columnsSubscription = this.cols.changes.subscribe(() => {
       this.initColumns();
