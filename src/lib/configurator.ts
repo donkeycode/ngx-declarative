@@ -5,6 +5,8 @@ import SimpleRestProvider from './core/data-providers/simple';
 */
 export class Configurator {
     public static apiUrl: string;
+    public static beforeRequest = () => {};
+    public static afterRequest = () => {};
 
     public static restProvider;
 

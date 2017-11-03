@@ -58,11 +58,14 @@ export abstract class RestListConnectable implements OnChanges, AfterContentInit
   public connectRest() {
     let restProvider = this.source ||
       Configurator.getRestProvider()(this.apiUrl || Configurator.apiUrl);
+
+    Configurator.beforeRequest();
     restProvider(GET_LIST, this.objects, {
         pagination: this.pagination,
         sort: this.sorting,
         filter: this.filtering
     }).then((results) => {
+        Configurator.afterRequest();
         this.totalPages = Math.ceil(results.total / this.pagination.perPage);
         this.rows = results.data;
     });

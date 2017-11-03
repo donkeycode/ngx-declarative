@@ -1,6 +1,6 @@
 {
   "name": "ngx-declarative-base",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "An Angular toolkit with datagrid, card-list in declarative programing",
   "keywords": [
     "angular2",
